@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,700&display=swap');
 :root {
-  --primary-color: #3a4052;
+  --primary-color: rgb(216, 137, 41);
 }
 * {
   box-sizing: border-box;
@@ -9,7 +9,9 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Josefin Sans",
+  sans-serif;
+  font-style: italic;
   line-height: 1.5;
 }
 a {
@@ -20,11 +22,12 @@ h1 {
   font-weight: 300;
   font-size: 60px;
   line-height: 1.2;
-  margin-bottom: 15px;
 }
+
 .showcase {
   position: relative;
   height: 100vh;
+  width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,30 +35,10 @@ h1 {
   text-align: center;
   padding: 0 20px;
   color:#fff;
+    overflow: hidden;
+    background: var(--primary-color) url("./backGr.jpg") no-repeat center center/cover;
 }
-
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: var(--primary-color) url("./cover.jpg") no-repeat center
-    center/cover;
-}
-
-.video-container video{
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-
-.video-container:after{
+.showcase:after{
     content: '';
     position: absolute;
     top:0;
@@ -71,30 +54,62 @@ h1 {
   justify-items: center;
 }
 .content__main{
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 50px 70px;
+}
+.content__mainH1{
+  grid-column: 1/span 2;
+}
+.content__mainH1 > span{
+  color:rgb(219, 170, 113);
+}
+.content__mainH2 {
+  grid-column: 1/span 3;
+  margin-right:100px;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: var(--primary-color);
 }
 .content__mainLogo{
     margin-left:20px;
     margin-bottom: 20px;
+    grid-column: 3;
 }
-.content__mainLogo:hover{
-    transform: scale(1.3);
-    transition: 1s;
+#Group {
+  animation: bird 1.5s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes bird{
+  from{
+     transform: rotateZ(0deg);
+  }
+  to{
+
+    transform: rotateZ(20deg);
+  }
 }
 .content__h1{
     z-index: 11;
 }
-.btn{
+.content__Btn {
     display: inline-block;
-    padding:10px 30px;
-    background: rgba(60, 65, 3, 0.8);
-    color:#fff;
-    border: 1px rgb(255, 255, 255) solid;
+    padding:5px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    color:rgb(14, 12, 12);
+    border: 4px rgb(167, 116, 6) solid;
     border-radius: 5px;
     margin-top: 25px;
     opacity: 0.7;
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 0.2em;
+    grid-column: 2;
+    width:100%;
+    align-self: center;
 }
 
 .btn:hover{
@@ -105,24 +120,67 @@ h1 {
     padding:40px;
     text-align: center;
      display: grid;
+     width: 100%;
 }
 
 #about p {
-    font-size: 1.2rem;
-     min-width: 600px;
-     margin:auto;
+    font-size: 1.4rem;
 }
 
 #about h2{
     margin:30px 0;
     color: var(--primary-color);
 }
+#about h3 {
+  padding:5px;
+  margin-left:40px;
+  margin-right:40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 25px;
+      letter-spacing: 0.2rem;
+        color: var(--primary-color);
+        background: black;
+}
 .social{
-   
+   display: flex;
+   font-size: 15px;
+   line-height: 15px;
+   align-self: center;
+   justify-self: center;
+   align-content: center;
+     background:var(--primary-color);
+     padding:15px;
+     border-radius: 5px;
 }
 .social a{
     margin: 0 5px;
 }
+.social__Btn{
+  color:black;
+}
 .social__Btn:hover{
-    color: black;
+    color: white;
+    transform: scale(1.2);
+}
+@media (max-width: 700px) {
+.content__mainH1 {
+font-size: 40px;
+}
+.content__mainH2{
+  margin-right: 0px;
+  font-size: 20px;
+  margin-top:20px;
+}
+.content__Btn{
+  grid-column: 1/span 3;
+}
+.content__mainLogo {
+ width:90px;
+ height:100px;
+ margin-left: 20px;
+ margin-right: 0px;
+ margin-bottom:0px;
+}
 }
